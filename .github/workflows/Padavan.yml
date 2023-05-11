@@ -1,0 +1,35 @@
+name: Padavan
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Padavan
+    runs-on: ubuntu-latest
+    if: ${{ !(github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) }}
+    env:
+      targets: "DIR-882"
+    steps:
+      - uses: actions/checkout@master
+      - name: Prepare environment
+        run: |
+          sudo apt update
+          sudo apt install libtool-bin gperf python3-docutils autopoint gettext
+      - name: Run shellcheck
+        run: sh ./trunk/tools/shellcheck.sh
+      - name: Prepare toolchain
+        run: |
+          cd toolchain-mipsel
+          sh dl_toolchain.sh
+      - name: Start build
+        run: |
+          cd trunk
+          mkdir -p /opt/images
+          for m in $targets; do fakeroot ./build_firmware_ci $m; \
+          if [ $? = 0 ]; then cp -f images/*.trx /opt/images/$m.trx; else exit 1; fi; \
+          ./clear_tree_simple >/dev/null 2>&1; done
+      - name: Upload images
+        if: always()
+        uses: actions/upload-artifact@master
+        with:
+          name: Padavan
+          path: /opt/images
