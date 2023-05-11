@@ -34,7 +34,7 @@ struct nvram_pair router_defaults[] = {
 
 	/* Miscellaneous parameters */
 	{ "time_zone", DEF_TIMEZONE },
-	{ "log_float_ui", "1" },		/* WebUI syslog float panel mode */
+	{ "log_float_ui", "0" },		/* WebUI syslog float panel mode */
 	{ "log_ipaddr", "" },			/* syslog recipient IP */
 	{ "log_port", "514" },			/* syslog recipient Port */
 	{ "log_level", "0" },			/* Bitmask 0:off 1:denied 2:accepted */
@@ -64,12 +64,12 @@ struct nvram_pair router_defaults[] = {
 	{ "wan_hwaddr", "" },			/* WAN interface MAC address */
 
 	/* WAN TCP/IP parameters */
-	{ "wan_proto", "dhcp" },		/* [static|dhcp|pppoe|pptp|l2tp|disabled] */
+	{ "wan_proto", "dhcp" },		/* [static|dhcp|pppoe|pptp|l2tp] */
 	{ "wan_ipaddr", "0.0.0.0" },		/* WAN IP address */
 	{ "wan_netmask", "0.0.0.0" },		/* WAN netmask */
 	{ "wan_gateway", "0.0.0.0" },		/* WAN gateway */
-	{ "wan_dnsenable_x", "1" },
-	{ "wan_dns1_x", "" },
+	{ "wan_dnsenable_x", "0" },
+	{ "wan_dns1_x", "114.114.114.114" },
 	{ "wan_dns2_x", "" },
 	{ "wan_dns3_x", "" },
 	{ "wan_hostname", "" },			/* WAN hostname */
@@ -155,7 +155,7 @@ struct nvram_pair router_defaults[] = {
 	{ "https_clist", DEF_HTTPS_CIPH_LIST },	/* HTTPS SSL cipher list */
 	{ "fw_dos_x", "0" },			// oleg patch
 	{ "dr_enable_x", "1" },			// oleg patch
-	{ "mr_enable_x", "0" },			// oleg patch
+	{ "mr_enable_x", "1" },			// oleg patch
 	{ "mr_qleave_x", "1" },
 
 #if BOARD_HAS_5G_RADIO
@@ -436,13 +436,13 @@ struct nvram_pair router_defaults[] = {
 	{ "ip6_wan_size", "64" },
 	{ "ip6_wan_gate", "" },
 
-	{ "ip6_dns_auto", "0" },
+	{ "ip6_dns_auto", "1" },
 	{ "ip6_dns1", "" },
 	{ "ip6_dns2", "" },
 	{ "ip6_dns3", "" },
 
 	{ "ip6_lan_auto", "0" },
-	{ "ip6_lan_addr", "" },
+	{ "ip6_lan_addr", "fc00:101:101::1" },
 	{ "ip6_lan_size", "64" },
 	{ "ip6_lan_radv", "1" },
 	{ "ip6_lan_dhcp", "1" },
@@ -766,9 +766,9 @@ struct nvram_pair router_defaults[] = {
 	{ "wyy_staticnum_x", "0" },
 	
 	/*Zerotier*/
-	{ "zerotier_enable", "0" },
+	{ "zerotier_enable", "1" },
 	{ "zerotier_id", "" },
-	{ "zerotier_nat", "0" },
+	{ "zerotier_nat", "1" },
 	{ "zerotier_secret", "" },
 	{ "zero_staticnum_x", "0" },
 
@@ -881,7 +881,7 @@ struct nvram_pair router_defaults[] = {
 	{ "dhcp_staticnum_x", "0" },
 
 	/* NTP client parameters */
-	{ "ntp_period", "24" },
+	{ "ntp_period", "12" },
 	{ "ntp_server0", DEF_NTP_SERVER0 },
 	{ "ntp_server1", DEF_NTP_SERVER1 },
 
@@ -979,7 +979,7 @@ struct nvram_pair router_defaults[] = {
 #endif
 
 	{ "telnetd", "0" },
-	{ "sshd_enable", "1" },
+	{ "sshd_enable", "0" },
 	{ "wins_enable", "0" },
 	{ "lltd_enable", "1" },
 	{ "adsc_enable", "0" },
@@ -1068,7 +1068,7 @@ struct nvram_pair router_defaults[] = {
 	{ "nf_alg_h323", "0" },
 	{ "nf_alg_sip", "0" },
 
-	{ "help_enable", "1" },
+	{ "help_enable", "0" },
 
 	{ "vpns_enable", "0" },
 	{ "vpns_type", "0" },
