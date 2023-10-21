@@ -10,13 +10,13 @@ mkdir -p /tmp/frp
 cat > "/tmp/frp/myfrpc.ini" <<-\EOF
 # ==========客户端配置：==========
 [common]
-server_addr = 1192.0.0.3
+server_addr = 0.0.0.0
 server_port = 7000
-token = 12345
+token = hjgidfsdfsd5615fsdgsd
 
 #log_file = /dev/null
 #log_level = info
-#log_max_days = 3
+#log_max_days = 0
 
 [web]
 remote_port = 6000
@@ -38,9 +38,8 @@ dashboard_port = 7500
 dashboard_user = admin
 dashboard_pwd = admin
 vhost_http_port = 88
-token = 12345
-subdomain_host = frps.com
-max_pool_count = 50
+token = hjgidfsdfsd5615fsdgsd
+max_pool_count = 10000
 #log_file = /dev/null
 #log_level = info
 #log_max_days = 3
