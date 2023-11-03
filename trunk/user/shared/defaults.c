@@ -54,8 +54,8 @@ struct nvram_pair router_defaults[] = {
 	{ "lan_netmask", DEF_LAN_MASK },	/* LAN netmask */
 	{ "lan_gateway", DEF_LAN_ADDR },	/* LAN gateway */
 	{ "lan_dns_x", "1" },			/* LAN DNS [static|dhcp] */
-	{ "lan_dns1", "223.5.5.5" }，		/* LAN DNS1 */
-	{ "lan_dns2", "114.114.114.114" }，	/* LAN DNS2 */
+	{ "lan_dns1", "" }，	        	/* LAN DNS1 */
+	{ "lan_dns2", "" }，	                /* LAN DNS2 */
 	{ "lan_domain", "lan" },		/* LAN domain name */
 	{ "lan_stp", "1" },			/* LAN spanning tree protocol */
 
@@ -69,9 +69,9 @@ struct nvram_pair router_defaults[] = {
 	{ "wan_netmask", "0.0.0.0" },		/* WAN netmask */
 	{ "wan_gateway", "0.0.0.0" },		/* WAN gateway */
 	{ "wan_dnsenable_x", "1" },
-	{ "wan_dns1_x", "" },
-	{ "wan_dns2_x", "" },
-	{ "wan_dns3_x", "" },
+	{ "wan_dns1_x", "223.5.5.5" },
+	{ "wan_dns2_x", "119.29.29.29" },
+	{ "wan_dns3_x", "114.114.114.114" },
 	{ "wan_hostname", "" },			/* WAN hostname */
 	{ "wan_vci", "" },			/* WAN vendor class identifier (OPT-60) */
 	{ "wan_ttl_fix", "0" },
