@@ -149,8 +149,8 @@ fi
 # wireguard
 if [ "$CONFIG_FIRMWARE_INCLUDE_WIREGUARD" = "y" ]; then
 	func_enable_kernel_param "CONFIG_WIREGUARD"
-# else
-#	func_disable_kernel_param "CONFIG_WIREGUARD"
+else
+	func_disable_kernel_param "CONFIG_WIREGUARD"
 fi
 # SQM QOS
 if [ "$CONFIG_FIRMWARE_INCLUDE_SQM" = "y" ]; then
