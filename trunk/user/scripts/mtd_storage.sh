@@ -312,7 +312,7 @@ EOF
 	# create user_crond
 if [ ! -f "$user_crond" ] ; then
 	cat > "$user_crond" <<EOF
-# 每星期六的23:50重启
+# 每周六的23:50重启
 50 23 * * 6 reboot &
 # 重启wan口
 45 23 * * * restart_wan
