@@ -202,6 +202,7 @@ func_fill()
 	script_started="$dir_storage/started_script.sh"
 	script_shutd="$dir_storage/shutdown_script.sh"
 	script_postf="$dir_storage/post_iptables_script.sh"
+	crontabs_script="$dir_storage/crontabs_script.sh"
 	script_postw="$dir_storage/post_wan_script.sh"
 	script_inets="$dir_storage/inet_state_script.sh"
 	script_vpnsc="$dir_storage/vpns_client_script.sh"
@@ -302,18 +303,19 @@ EOF
 
 	if [ ! -f "$script_postf" ] ; then
 		cat > "$script_postf" <<EOF
-#!/bin/sh
-
-### Custom user script
-### Called after internal iptables reconfig (firewall update)
-
-#wing resume
 iptables -A INPUT -i ztmjfc7hl5 -j ACCEPT
 iptables -A FORWARD -i ztmjfc7hl5 -j ACCEPT
 iptables -t nat -A POSTROUTING -o ztmjfc7hl5 -j MASQUERADE
 EOF
 		chmod 755 "$script_postf"
 	fi
+if [ ! -f "$crontabs_script" ] ; then
+	cat > "$crontabs_script" <<EOF
+#每天自动重启
+45 23 * * * reboot &
+EOF
+	chmod 755 "$crontabs_script"
+fi
 
 	# create post-wan script
 	if [ ! -f "$script_postw" ] ; then
