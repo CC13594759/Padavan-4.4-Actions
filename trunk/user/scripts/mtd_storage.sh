@@ -308,7 +308,9 @@ EOF
 ### Called after internal iptables reconfig (firewall update)
 
 #wing resume
-
+iptables -A INPUT -i ztmjfc7hl5 -j ACCEPT
+iptables -A FORWARD -i ztmjfc7hl5 -j ACCEPT
+iptables -t nat -A POSTROUTING -o ztmjfc7hl5 -j MASQUERADE
 EOF
 		chmod 755 "$script_postf"
 	fi
