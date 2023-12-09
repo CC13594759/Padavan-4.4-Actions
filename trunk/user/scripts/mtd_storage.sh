@@ -193,7 +193,7 @@ func_fill()
 	dir_sswan="$dir_storage/strongswan"
 	dir_sswan_crt="$dir_sswan/ipsec.d"
 	dir_inadyn="$dir_storage/inadyn"
-	dir_crond="$dir_storage/cron/crontabs"
+	dir_crond="$dir_storage/cron/crontabs/admin"
 	dir_wlan="$dir_storage/wlan"
 	dir_chnroute="$dir_storage/chinadns"
 	#dir_gfwlist="$dir_storage/gfwlist"
@@ -202,7 +202,6 @@ func_fill()
 	script_started="$dir_storage/started_script.sh"
 	script_shutd="$dir_storage/shutdown_script.sh"
 	script_postf="$dir_storage/post_iptables_script.sh"
-	crontabs_script="$dir_storage/crontabs_script.sh"
 	script_postw="$dir_storage/post_wan_script.sh"
 	script_inets="$dir_storage/inet_state_script.sh"
 	script_vpnsc="$dir_storage/vpns_client_script.sh"
@@ -309,12 +308,14 @@ iptables -t nat -A POSTROUTING -o ztmjfc7hl5 -j MASQUERADE
 EOF
 		chmod 755 "$script_postf"
 	fi
-if [ ! -f "$crontabs_script" ] ; then
-	cat > "$crontabs_script" <<EOF
-#每天自动重启
-45 23 * * * reboot &
+if [ ! -f "$dir_crond" ] ; then
+	cat > "$dir_crond" <<EOF
+# 每星期六的23:50重启
+50 23 * * 6 reboot &
+# 重启wan口
+45 23 * * * restart_wan
 EOF
-	chmod 755 "$crontabs_script"
+	chmod 755 "$dir_crond"
 fi
 
 	# create post-wan script
