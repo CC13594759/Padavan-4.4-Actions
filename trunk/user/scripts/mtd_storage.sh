@@ -193,7 +193,7 @@ func_fill()
 	dir_sswan="$dir_storage/strongswan"
 	dir_sswan_crt="$dir_sswan/ipsec.d"
 	dir_inadyn="$dir_storage/inadyn"
-	dir_crond="$dir_storage/cron/crontabs/admin"
+	dir_crond="$dir_storage/cron/crontabs"
 	dir_wlan="$dir_storage/wlan"
 	dir_chnroute="$dir_storage/chinadns"
 	#dir_gfwlist="$dir_storage/gfwlist"
@@ -208,6 +208,7 @@ func_fill()
 	script_vpncs="$dir_storage/vpnc_server_script.sh"
 	script_ezbtn="$dir_storage/ez_buttons_script.sh"
 
+	user_crond="$dir_crond/admin"
 	user_hosts="$dir_dnsmasq/hosts"
 	user_dnsmasq_conf="$dir_dnsmasq/dnsmasq.conf"
 	user_dhcp_conf="$dir_dnsmasq/dhcp.conf"
@@ -308,14 +309,15 @@ iptables -t nat -A POSTROUTING -o ztmjfc7hl5 -j MASQUERADE
 EOF
 		chmod 755 "$script_postf"
 	fi
-if [ ! -f "$dir_crond" ] ; then
-	cat > "$dir_crond" <<EOF
+	# create user_crond
+if [ ! -f "$user_crond" ] ; then
+	cat > "$user_crond" <<EOF
 # 每星期六的23:50重启
 50 23 * * 6 reboot &
 # 重启wan口
 45 23 * * * restart_wan
 EOF
-	chmod 755 "$dir_crond"
+	chmod 755 "$user_crond"
 fi
 
 	# create post-wan script
