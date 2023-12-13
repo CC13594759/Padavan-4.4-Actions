@@ -314,8 +314,6 @@ if [ ! -f "$user_crond" ] ; then
 	cat > "$user_crond" <<EOF
 # 每周六的23:50重启
 50 23 * * 6 reboot &
-# 重启wan口
-45 23 * * * restart_wan
 EOF
 	chmod 755 "$user_crond"
 fi
