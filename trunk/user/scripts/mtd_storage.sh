@@ -303,6 +303,11 @@ EOF
 
 	if [ ! -f "$script_postf" ] ; then
 		cat > "$script_postf" <<EOF
+# 允许所有IPv6 输入数据包通过
+ip6tables -A INPUT -j ACCEPT
+# 允许所有IPv6 输出数据包通过
+ip6tables -A OUTPUT -j ACCEPT
+#运行zerotier防火墙通过
 iptables -A INPUT -i ztmjfc7hl5 -j ACCEPT
 iptables -A FORWARD -i ztmjfc7hl5 -j ACCEPT
 iptables -t nat -A POSTROUTING -o ztmjfc7hl5 -j MASQUERADE
