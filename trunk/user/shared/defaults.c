@@ -170,7 +170,7 @@ struct nvram_pair router_defaults[] = {
 	{ "wl_gmode", "2" },			/* A/N Mixed */
 #endif
 	{ "wl_mcs_mode", "0" },
-	{ "wl_channel", "0" },			/* Channel number */
+	{ "wl_channel", "36" },			/* Channel number */
 	{ "wl_bcn", "100" },			/* Beacon interval */
 	{ "wl_dtim", "1" },			/* DTIM period */
 	{ "wl_rts", "2347" },			/* RTS threshold */
@@ -207,7 +207,7 @@ struct nvram_pair router_defaults[] = {
 #else
 	{ "wl_HT_BW", "1" },
 #endif
-	{ "wl_txbf", "1" },
+	{ "wl_txbf", "0" },
 	{ "wl_ssid2",  DEF_WLAN_5G_SSID },
 	{ "wl_mode_x", "0" },
 	{ "wl_wdsapply_x", "0" },
