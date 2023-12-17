@@ -1053,7 +1053,7 @@ struct nvram_pair router_defaults[] = {
 #endif
 	{ "fw_syn_cook", "0" },
 	{ "fw_mac_drop", "0" },
-	{ "nf_nat_type", "1" },
+	{ "nf_nat_type", "2" },
 	{ "nf_nat_loop", "1" },
 #if (BOARD_RAM_SIZE > 128)
 	{ "nf_max_conn", "32768" },
