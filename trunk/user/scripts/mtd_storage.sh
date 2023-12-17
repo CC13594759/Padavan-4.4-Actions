@@ -300,9 +300,6 @@ EOF
 	if [ ! -f "$script_postf" ] ; then
 		cat > "$script_postf" <<EOF
 #zerotier
-iptables -A INPUT -i ztmjfc7hl5 -j ACCEPT
-iptables -A FORWARD -i ztmjfc7hl5 -j ACCEPT
-iptables -t nat -A POSTROUTING -o ztmjfc7hl5 -j MASQUERADE
 EOF
 		chmod 755 "$script_postf"
 	fi
@@ -532,7 +529,7 @@ EOF
 	# create user dns servers
 	if [ ! -f "$user_dhcp_conf" ] ; then
 		cat > "$user_dhcp_conf" <<EOF
-#6C:96:CF:E0:95:55,192.168.1.10,iMac
+#2C:15:E1:15:1F:18,192.168.12.11,K2P
 
 EOF
 		chmod 644 "$user_dhcp_conf"
