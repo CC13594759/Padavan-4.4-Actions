@@ -299,7 +299,14 @@ EOF
 
 	if [ ! -f "$script_postf" ] ; then
 		cat > "$script_postf" <<EOF
-#zerotier
+#!/bin/sh
+export PATH='/etc/storage/bin:/tmp/script:/etc/storage/script:/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
+export LD_LIBRARY_PATH=/lib:/opt/lib
+#ip6tables -A INPUT -j ACCEPT
+#ip6tables -A OUTPUT -j ACCEPT
+#ip6tables -A FORWARD -j ACCEPT
+
+logger -t "【防火墙规则】" "运行脚本完成"
 EOF
 		chmod 755 "$script_postf"
 	fi
