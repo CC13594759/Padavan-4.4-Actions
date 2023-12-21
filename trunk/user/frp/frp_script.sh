@@ -10,21 +10,15 @@ mkdir -p /tmp/frp
 cat > "/tmp/frp/myfrpc.ini" <<-\EOF
 # ==========客户端配置：==========
 [common]
-server_addr = 0.0.0.0
+server_addr = 域名
 server_port = 7000
 token = hjgidfsdfsd5615fsdgsd
 
-#log_file = /dev/null
-#log_level = info
-#log_max_days = 0
-
 [web]
 remote_port = 6000
-type = http
-local_ip = 192.168.2.1
+type = tcp
+local_ip = 0.0.0.0
 local_port = 80
-subdomain = test
-#host_header_rewrite = 实际你内网访问的域名，可以供公网的域名不一致，如果一致可以不写
 # ====================
 EOF
 
@@ -34,15 +28,10 @@ cat > "/tmp/frp/myfrps.ini" <<-\EOF
 [common]
 bind_port = 7000
 dashboard_port = 7500
-# dashboard 用户名密码，默认都为 admin
 dashboard_user = admin
 dashboard_pwd = admin
-vhost_http_port = 88
 token = hjgidfsdfsd5615fsdgsd
-max_pool_count = 10000
-#log_file = /dev/null
-#log_level = info
-#log_max_days = 3
+allow_ports = 10000-60000
 # ====================
 EOF
 
