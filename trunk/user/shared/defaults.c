@@ -901,7 +901,7 @@ struct nvram_pair router_defaults[] = {
 	{ "ddns_period", "0" },
 	{ "ddns_forced", "7" },
 	{ "ddns_verbose", "1" },
-	{ "ddns_source", "2" },
+	{ "ddns_source", "1" },
 	{ "ddns_checkip", "0" },
 	{ "ddns2_checkip", "0" },
 	{ "ddns_ssl", "0" },
