@@ -42,7 +42,7 @@ struct nvram_pair router_defaults[] = {
 	{ "stats_server", "" },			/* URL for posting stats */
 
 	/* Big switches */
-	{ "fw_enable_x", "0" },
+	{ "fw_enable_x", "1" },
 
 	/* LAN H/W parameters */
 	{ "lan_hwaddr", "" },			/* LAN interface MAC address */
