@@ -242,7 +242,7 @@ function showMRULESList(){
 												 允许Zerotier的拨入客户端访问路由器LAN资源（需要在 Zerotier管理页面设定到LAN网段的路由表）
 											</td>
 										</tr>
-<tr>
+				<tr>
 											<th>zerotier官网</th>
 											<td>
 				<input type="button" class="btn btn-success" value="zerotier官网" onclick="window.open('https://my.zerotier.com/network')" size="0">
