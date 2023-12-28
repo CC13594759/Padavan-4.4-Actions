@@ -251,7 +251,6 @@ func_fill()
 	if [ ! -f "$script_started" ] ; then
 		cat > "$script_started" <<EOF
 #!/bin/sh
-
 ### Custom user script
 ### Called after router started and network is ready
 
@@ -286,7 +285,6 @@ EOF
 	if [ ! -f "$script_shutd" ] ; then
 		cat > "$script_shutd" <<EOF
 #!/bin/sh
-
 ### Custom user script
 ### Called before router shutdown
 ### \$1 - action (0: reboot, 1: halt, 2: power-off)
@@ -300,13 +298,10 @@ EOF
 	if [ ! -f "$script_postf" ] ; then
 		cat > "$script_postf" <<EOF
 #!/bin/sh
-export PATH='/etc/storage/bin:/tmp/script:/etc/storage/script:/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
-export LD_LIBRARY_PATH=/lib:/opt/lib
 #ip6tables -A INPUT -j ACCEPT
 #ip6tables -A OUTPUT -j ACCEPT
 #ip6tables -A FORWARD -j ACCEPT
 
-logger -t "【防火墙规则】" "运行脚本完成"
 EOF
 		chmod 755 "$script_postf"
 	fi
@@ -338,13 +333,10 @@ EOF
 	if [ ! -f "$script_inets" ] ; then
 		cat > "$script_inets" <<EOF
 #!/bin/sh
-
 ### Custom user script
 ### Called on Internet status changed
 ### \$1 - Internet status (0/1)
 ### \$2 - elapsed time (s) from previous state
-
-logger -t "di" "Internet state: \$1, elapsed time: \$2s."
 
 EOF
 		chmod 755 "$script_inets"
