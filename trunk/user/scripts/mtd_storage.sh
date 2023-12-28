@@ -297,10 +297,11 @@ EOF
 
 	if [ ! -f "$script_postf" ] ; then
 		cat > "$script_postf" <<EOF
-#!/bin/sh
-#ip6tables -A INPUT -j ACCEPT
-#ip6tables -A OUTPUT -j ACCEPT
-#ip6tables -A FORWARD -j ACCEPT
+#ip6tables -F
+#ip6tables -X
+#ip6tables -P INPUT ACCEPT
+#ip6tables -P OUTPUT ACCEPT
+#ip6tables -P FORWARD ACCEPT
 
 EOF
 		chmod 755 "$script_postf"
