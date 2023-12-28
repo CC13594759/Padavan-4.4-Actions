@@ -308,8 +308,8 @@ EOF
 	# create user_crond
 if [ ! -f "$user_crond" ] ; then
 	cat > "$user_crond" <<EOF
-# 每周六23:50重启
-50 23 * * 6 reboot &
+# 每周六23:51重启
+51 23 * * 6 reboot &
 EOF
 	chmod 755 "$user_crond"
 fi
