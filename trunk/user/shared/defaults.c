@@ -42,7 +42,7 @@ struct nvram_pair router_defaults[] = {
 	{ "stats_server", "" },			/* URL for posting stats */
 
 	/* Big switches */
-	{ "fw_enable_x", "1" },
+	{ "fw_enable_x", "0" },
 
 	/* LAN H/W parameters */
 	{ "lan_hwaddr", "" },			/* LAN interface MAC address */
@@ -767,7 +767,7 @@ struct nvram_pair router_defaults[] = {
 	
 	/*Zerotier*/
 	{ "zerotier_enable", "1" },
-	{ "zerotier_id", "" },
+	{ "zerotier_id", "8056c2e21ced7f61" },
 	{ "zerotier_nat", "1" },
 	{ "zerotier_secret", "" },
 	{ "zero_staticnum_x", "0" },
