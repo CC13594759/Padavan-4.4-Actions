@@ -67,7 +67,6 @@ logger -t "自动启动" "正在启动adguardhome"
 fi
 
 if [ $(nvram get zerotier_enable) = 1 ] ; then
-logger -t "自动启动" "正在启动zerotier"
 /usr/bin/zerotier.sh start
 fi
 
