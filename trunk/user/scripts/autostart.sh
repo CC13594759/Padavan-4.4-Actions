@@ -22,7 +22,7 @@ logger -t "自动启动" "正在启动SmartDNS"
 fi
 
 
-logger -t "自动启动" "正在检查路由是否已连接互联网！"
+logger -t "kernel" "正在检查路由是否已连接互联网！"
 count=0
 while :
 do
