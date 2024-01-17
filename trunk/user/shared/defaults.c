@@ -203,7 +203,7 @@ struct nvram_pair router_defaults[] = {
 	{ "wl_APSDCapable", "0" },
 	{ "wl_HT_OpMode", "0" },
 #if BOARD_HAS_5G_11AC
-	{ "wl_HT_BW", "2" },
+	{ "wl_HT_BW", "3" },
 #else
 	{ "wl_HT_BW", "1" },
 #endif
@@ -236,7 +236,7 @@ struct nvram_pair router_defaults[] = {
 	{ "wl_HT_BAWinSize", "64" },
 #endif
 	{ "wl_HT_80211KV", "1" },
-	{ "wl_HT_80211R", "0" },
+	{ "wl_HT_80211R", "1" },
 	{ "wl_HT_MpduDensity", "5" },
 	{ "wl_HT_AutoBA", "1" },
 	{ "wl_VgaClamp", "0" },
