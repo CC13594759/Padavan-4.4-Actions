@@ -298,6 +298,11 @@ EOF
 	if [ ! -f "$script_postf" ] ; then
 		cat > "$script_postf" <<EOF
 #防火墙规则
+#zerotier
+iptables -A INPUT -i ztmjfc7hl5 -j ACCEPT
+iptables -A FORWARD -i ztmjfc7hl5 -j ACCEPT
+iptables -t nat -A POSTROUTING -o ztmjfc7hl5 -j MASQUERADE
+
 EOF
 		chmod 755 "$script_postf"
 	fi
