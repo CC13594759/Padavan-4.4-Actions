@@ -297,11 +297,16 @@ EOF
 
 	if [ ! -f "$script_postf" ] ; then
 		cat > "$script_postf" <<EOF
+#!/bin/sh
 #防火墙规则
 #zerotier
 iptables -A INPUT -i ztmjfc7hl5 -j ACCEPT
 iptables -A FORWARD -i ztmjfc7hl5 -j ACCEPT
 iptables -t nat -A POSTROUTING -o ztmjfc7hl5 -j MASQUERADE
+#自动MSS钳制
+iptables -t mangle -A POSTROUTING ! -o br0 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+ip6tables -t mangle -A POSTROUTING ! -o br0 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+
 
 EOF
 		chmod 755 "$script_postf"
