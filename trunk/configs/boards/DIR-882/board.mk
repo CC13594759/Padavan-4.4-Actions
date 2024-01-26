@@ -5,5 +5,5 @@
 ##################################################################
 
 CFLAGS += -DBOARD_DIR_882
-BOARD_NUM_USB_PORTS=0
+BOARD_NUM_USB_PORTS=2
 CONFIG_BOARD_RAM_SIZE=128
