@@ -303,6 +303,10 @@ EOF
 iptables -A INPUT -i ztmjfc7hl5 -j ACCEPT
 iptables -A FORWARD -i ztmjfc7hl5 -j ACCEPT
 iptables -t nat -A POSTROUTING -o ztmjfc7hl5 -j MASQUERADE
+#允许所有IPv6数据包通过
+ip6tables -A INPUT -j ACCEPT
+ip6tables -A OUTPUT -j ACCEPT
+ip6tables -A FORWARD -j ACCEPT
 #自动MSS钳制
 iptables -t mangle -A POSTROUTING ! -o br0 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
 ip6tables -t mangle -A POSTROUTING ! -o br0 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
