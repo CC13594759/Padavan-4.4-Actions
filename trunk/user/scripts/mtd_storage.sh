@@ -298,11 +298,6 @@ EOF
 	if [ ! -f "$script_postf" ] ; then
 		cat > "$script_postf" <<EOF
 #!/bin/sh
-#防火墙规则
-#zerotier
-iptables -A INPUT -i ztmjfc7hl5 -j ACCEPT
-iptables -A FORWARD -i ztmjfc7hl5 -j ACCEPT
-iptables -t nat -A POSTROUTING -o ztmjfc7hl5 -j MASQUERADE
 #允许所有IPv6数据包通过
 ip6tables -A INPUT -j ACCEPT
 ip6tables -A OUTPUT -j ACCEPT
@@ -328,12 +323,25 @@ fi
 	if [ ! -f "$script_postw" ] ; then
 		cat > "$script_postw" <<EOF
 #!/bin/sh
+if [ $1 == "up" ] ; then
+SleepTime=30
+logger -t "WAN状态改变" "【延时$SleepTime秒检测ZeroTier状态】"
+sleep $SleepTime
+KEYWORD="zte"
+RULE_EXIST=$(iptables -L -n -v | grep "$KEYWORD")
+NVRAM_ZEROTIER_ENABLE=$(nvram get zerotier_enable)
+if [ -z "$RULE_EXIST" ]; then
+    if [ "$NVRAM_ZEROTIER_ENABLE" = "1" ]; then
+        logger -t "检测结果" "【ZeroTier防火墙规则不存在，但服务已启用，需要重启服务！】"
+        zerotier.sh stop && zerotier.sh start
+    else
+        logger -t "检测结果" "【ZeroTier防火墙规则不存在，但服务未启用，不需要重启服务！】"
+    fi
+else
+    logger -t "检测结果" "【ZeroTier防火墙规则存在，不需要重启服务！】"
+fi
+fi
 
-### Custom user script
-### Called after internal WAN up/down action
-### \$1 - WAN action (up/down)
-### \$2 - WAN interface name (e.g. eth3 or ppp0)
-### \$3 - WAN IPv4 address
 
 EOF
 		chmod 755 "$script_postw"
